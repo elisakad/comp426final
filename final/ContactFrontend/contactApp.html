@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact App</title>
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.css">
+    <link rel=stylesheet href="contactApp.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="http://www.cs.unc.edu/~kmp/comp426fall20/jquery-3.5.1.js"></script>
+    <script src="Contact.js"></script>
+    <script src="ContactView.js"></script>
+    <script src="contactApp.js"></script>
+</head>
+
+  <body>
+  <section class="hero is-medium-with-navbar is-danger is-light"">
+    <div class="hero-body">
+    <div class="container has-text-centered">
+      
+         <h1 class="title">Contact App</h1>
+         <h2 class="subtitle">A new way to keep track of who you talk to!</h2>
+     
+    </div>
+  </div>
+
+
+  <div class= "hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li class="is-active">
+            <a>Use it!</a>
+          </li>
+          <li>
+            <a href="contactabout.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  </section>
+
+
+<section class="section">
+<div class="container">
+  <div class="tile is-ancestor">
+    <div class="tile is-4 is-vertical is-parent">
+      <div class="tile is-child box">
+        <p class="title has-text-centered">Click here to add a contact </p>
+        <div class="column has-text-centered"><span id="add_contact"><i class="icon fas fa-plus is-large"></i></span></div>
+        <img src= "https://images-na.ssl-images-amazon.com/images/I/61o0DtGN4qL._AC_SL1500_.jpg"> </img>
+      </div>
+    </div>
+    <div class="tile is-parent has-text-centered">
+      <div class="tile is-child box has-text-centered">
+        <p class="title">Your List of Contacts!</p>
+        <div id="contactList"></div>
+      </div>
+    </div>
+    <div class="tile is-parent has-text-centered">
+      <div class="tile is-child box has-text-centered">
+        <p class="title">Make a Reminder list of who to call!</p>
+        <head>
+          <title>Todo list - Vue.js</title>    
+          <meta name="viewport" content="width=device-width" />
+          <link rel="icon" href="images/favicon.png" sizes="32x32">
+          <link rel="stylesheet" type="text/css" href="css/styles.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,100,700,100italic,300italic,400italic">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+        
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39432248-2"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+        
+            gtag('config', 'UA-39432248-2');
+          </script>
+        
+        </head>
+        
+        <body>
+          <div id="app">
+            <h2 class="subtitle">Daily Call List</h2>
+            <section class="todo-wrapper">
+              <h2 class="todo-title">{{ today.day }}<br>{{ today.date }}</h2>
+              <form @keydown.enter.prevent="">
+                <input type="text" class="input-todo" v-bind:class="{ active: new_todo }" placeholder="Take the garbage out" v-model="new_todo" v-on:keyup.enter="addItem">
+                <div class="btn btn-add" v-bind:class="{ active: new_todo }"  @click="addItem">+</div>
+              </form>
+        
+              <div v-if="pending.length > 0">
+                <p class="status busy">You have {{ pending.length }} pending item<span v-if="pending.length>1">s</span></p>
+                <transition-group name="todo-item" tag="ul" class="todo-list">
+                  <li v-for="(item, index) in pending" v-bind:key="item.title">
+                    <input class="todo-checkbox" v-bind:id="'item_' + item.id" v-model="item.done" type="checkbox">
+                    <label v-bind:for="'item_' + item.id"></label>
+                    <span class="todo-text">{{ item.title }}</span>
+                    <span class="delete" @click="deleteItem(item)"></span>
+                  </li>
+                </transition>  
+              </div> 
+  
+        
+              <div v-if="completed.length > 0 && showComplete">
+                <p class="status">Completed tasks: {{ completedPercentage }}</p>
+                <transition-group name="todo-item" tag="ul" class="todo-list archived">
+                  <li v-for="(item, index) in completed" v-bind:key="item.title">
+                    <input class="todo-checkbox" v-bind:id="'item_' + item.id" v-model="item.done" type="checkbox">
+                    <label v-bind:for="'item_' + item.id"></label>
+                    <span class="todo-text">{{ item.title }}</span>
+                    <span class="delete" @click="deleteItem(item)"></span>
+                  </li>
+                </transition>  
+              </div>
+              <div class="control-buttons">
+                <div class="btn btn-secondary" v-if="completed.length > 0" @click="toggleShowComplete"><span v-if="!showComplete">Show</span><span v-else>Hide</span> Complete</div>
+                <div class="btn btn-secondary" v-if="todoList.length > 0" @click="clearAll">Clear All</div>
+              </div>
+            </section>
+          </div>
+          <footer>
+        
+          </footer>
+          <script async defer src="https://buttons.github.io/buttons.js"></script>
+        </body>
+        
+        
+        <script>
+        new Vue({
+          el: '#app',
+          data() {
+            return {
+              todoList: [
+                {"id":0,"title":"Go to codepen and get inspired","done":false},
+                {"id":1,"title":"Pick a project","done":false},
+                {"id":4,"title":"Create a new pen","done":true}
+              ],
+              new_todo: '',
+              showComplete: false,
+            };
+          },
+          mounted() {
+            this.getTodos();
+          },
+          watch: {
+            todoList: {
+              handler: function(updatedList) {
+                localStorage.setItem('todo_list', JSON.stringify(updatedList));
+              },
+              deep: true
+            }
+          },
+          computed:{
+            pending: function() {
+              return this.todoList.filter(function(item) {
+                return !item.done;
+              })
+            },
+            completed: function() {
+              return this.todoList.filter(function(item) {
+                return item.done;
+              }); 
+            },
+            completedPercentage: function() {
+              return (Math.floor((this.completed.length / this.todoList.length) * 100)) + "%";
+            },
+            today: function() {
+              var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+              var today = new Date();
+              var daily = today.getDate();
+              var monthly = today.getMonth()+1; //January is 0!
+              var fullYear = today.getFullYear();
+        
+              if(daily<10) {
+                  daily = '0'+daily
+              } 
+        
+              if(monthly<10) {
+                  monthly = '0'+monthly
+              } 
+        
+              today = {
+                day: weekday[today.getDay()],
+                date:  monthly + '-' + daily + '-' + fullYear,
+              }
+        
+              return(today);
+            }
+          },
+          methods: {
+            // get all todos when loading the page
+            getTodos() {
+              if (localStorage.getItem('todo_list')) {
+                this.todoList = JSON.parse(localStorage.getItem('todo_list'));
+              }
+            },
+            // add a new item
+            addItem() {
+              // validation check
+              if (this.new_todo) {
+                this.todoList.unshift({
+                  id: this.todoList.length,
+                  title: this.new_todo,
+                  done: false,
+                });
+              }
+              // reset new_todo
+              this.new_todo = '';
+              // save the new item in localstorage
+              return true;
+            },
+            deleteItem(item) {
+              this.todoList.splice(this.todoList.indexOf(item), 1);
+            },
+            toggleShowComplete() {
+              this.showComplete = !this.showComplete;
+            },
+            clearAll() {
+              this.todoList = [];
+            }
+          },
+        });
+        </script>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+</body>
+</html>

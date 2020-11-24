@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact App</title>
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.css">
+    <link rel=stylesheet href="contactApp.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="http://www.cs.unc.edu/~kmp/comp426fall20/jquery-3.5.1.js"></script>
+    <script src="Contact.js"></script>
+    <script src="ContactView.js"></script>
+    <script src="contactApp.js"></script>
+</head>
+
+  <body>
+  <section class="hero is-medium-with-navbar is-danger is-light">
+    <div class="hero-body">
+    <div class="container has-text-centered">
+      
+         <h1 class="title">Contact App</h1>
+         <h2 class="subtitle">A new way to keep track of who you talk to!</h2>
+     
+    </div>
+  </div>
+
+
+  <div class= "hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li>
+            <a href="contactApp.html">Use it!</a>
+          </li>
+          <li class="is-active">
+            <a>About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  </section>
+
+
+<section class="section">
+<div class="container">
+  <!-- <div class="tile is-ancestor">
+    <div class="tile is-4 is-vertical is-parent">
+      <div class="tile is-child box">
+        <p class="title has-text-centered">Click here to add a contact </p>
+        <div class="column has-text-centered"><span id="add_contact"><i class="icon fas fa-plus is-large"></i></span></div>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <div class="tile is-child box">
+        <p class="title">Three</p>
+        <div id="contactList"></div>
+      </div>
+    </div>
+  </div> -->
+
+</div>
+</section>
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child box">
+            <p class="title">Benefits of a virtual directory:</p>
+            <p class="subtitle">
+                1. Keep track of numbers to record <br />
+                2. Prioritize contacts. <br />
+                3. Keep them up to date.<br />
+                3. Stay organized with calls.
+            </p>
+          </article>
+          <article class="tile is-child box">
+            <p class="title">Keeping up with calls</p>
+            <p class="subtitle">Keeping up with calls enables us to maintain communication and connection with those most important to us, as well as professional networks. A contact app is a perfect way to maintain a balance between personal and professional calling needs.</p>
+
+            <figure class="image is-4by3">
+              <img src="https://i.insider.com/5d14d5af21a861024728a205?width=600&format=jpeg&auto=webp">
+            </figure>
+
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Motivation</p>
+            <p class="subtitle">Ever forget your best friend's number? Or feel tired of the influx of calls you have to keep up with on the daily? What about all the times you've wanted to call that special person, but forgot to store their number in your phone? Never fear! Contact App is here! With contact app you'll never have to worry about losing people's numbers or asking mutual contacts for them or looking them up online. This application lets you record that list of numbers you never want to forget, and refer back to them when need be!</p>
+            <br />
+            <figure class="image is-4by3">
+                
+              <img src="https://media.giphy.com/media/3o6Mb5h1UQlrtoebK0/giphy.gif">
+            </figure>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Make calling people easier!</p>
+          <p class="subtitle">Any feedback?</p>
+          <div class="content">
+            <p>Feel free to reach out to:<br />
+                1. elisakac@live.unc.edu<br />
+                2. Or Call: 704-***-***. You can even add us in your Contact App!<br />
+                
+                <div class="columns is-multiline justify-center">
+                    <div class="column">
+                        <img src= "https://i.pinimg.com/originals/38/bb/df/38bbdf76e980623f36d8ddba41a45d92.png"> </img>
+                    </div>
+                    <div class="column">
+                        <img src="https://d2rd7etdn93tqb.cloudfront.net/wp-content/uploads/2018/09/hide-your-pain-harold-meme-phone-social-092518.jpg">
+                    </div>
+                </div>
+                
+                
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <div class="content">
+          <p class="title">How to use Contact App</p>
+          <p class="subtitle">A step-by-step process!</p>
+          <div class="content">
+            <p class="subtitle">
+                1. Click the plus symbol to create a new entry. <br />
+               
+                <figure class="image is-3by2">
+                    <img src="data:image/jpeg;base64,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">
+                  </figure>
+                 
+                2. Enter the first name, last name, and <br />additional contact information in the boxes <br /> provided at the end of the contact list <br />
+             
+                <figure class="image is-3by2">
+                    <img src="https://img.gadgethacks.com/img/24/14/63662673114595/0/hide-contacts-dont-have-phone-numbers-android.1280x600.jpg">
+                  </figure>
+                
+                3. Click Enter, then watch as the contact appears in the contact list!<br />
+              
+                <figure class="image is-3by2">
+                    <img src="https://media4.giphy.com/media/xT5LMTFnpe1cBSvEFG/giphy.gif?cid=ecf05e4737079fb217c7861ef461c8615c944946d6262e00&rid=giphy.gif">
+                  </figure>
+                  
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  
+  <!-- <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">Side column</p>
+        <p class="subtitle">With some content</p>
+        <div class="content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+        </div>
+      </article>
+    </div>
+    <div class="tile is-parent is-8">
+      <article class="tile is-child box">
+        <p class="title">Main column</p>
+        <p class="subtitle">With some content</p>
+        <div class="content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+        </div>
+      </article>
+    </div>
+  </div> -->
+
+
+</body>
+</html>
